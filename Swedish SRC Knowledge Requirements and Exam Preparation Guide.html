@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="sv" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <title>SRC – Kunskapskrav (Sverige)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+      body {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 40px 80px;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: #0f172a;
+        line-height: 1.65;
+        background: radial-gradient(1200px 600px at 30% -10%, #eef6ff 0%, #ffffff 55%);
+      }
+
+      :root {
+        --accent: #1d4ed8;
+        --accent-soft: #e6f0ff;
+        --ink: #0f172a;
+        --muted: #475569;
+        --border: #d8e1ee;
+        --panel: #ffffff;
+      }
+
+      a { color: var(--accent); }
+      a:hover { text-decoration: underline; }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.95em;
+      }
+
+      .meta {
+        display: grid;
+        gap: 0.25rem;
+        margin-top: 0.75rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 0.2rem 0.55rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.8);
+      }
+
+      /* Print-like header styling */
+      header {
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 32px;
+        padding-bottom: 18px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin: 0;
+        color: var(--ink);
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+
+      .subtitle {
+        font-size: 1.05rem;
+        text-align: center;
+        color: var(--muted);
+        margin-top: 0.35rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .note {
+        font-size: 0.95rem;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      /* TOC Styling */
+      #toc {
+        background: rgba(255,255,255,0.9);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px 18px 10px;
+        margin-bottom: 28px;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      }
+
+      #toc h2 {
+        font-size: 16pt;
+        margin-top: 0;
+        border-bottom: none;
+        text-align: center;
+      }
+
+      #toc ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      #toc li {
+        margin-bottom: 5px;
+      }
+
+      #toc a {
+        text-decoration: none;
+        color: var(--ink);
+        border-bottom: 1px dotted rgba(29, 78, 216, 0.5);
+      }
+
+      /* Section Styling */
+      section {
+        margin-bottom: 40px;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.4rem;
+        margin-top: 2.1rem;
+        margin-bottom: 1rem;
+        color: var(--ink);
+      }
+
+      h3 {
+        font-size: 1.15rem;
+        font-weight: 650;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--ink);
+      }
+
+      /* Requirement Item Styling */
+      .req-item {
+        margin-bottom: 18px;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-left: 5px solid rgba(29, 78, 216, 0.35);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.92);
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+      }
+
+      .req-bullet {
+        font-weight: 700;
+        margin-bottom: 6px;
+        display: block;
+        color: var(--ink);
+      }
+
+      .explanation {
+        margin-bottom: 10px;
+        color: var(--muted);
+      }
+
+      /* Model Answer Box */
+      .model-answer {
+        background: linear-gradient(180deg, #f6f9ff, #ffffff);
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+        margin-top: 10px;
+        border-radius: 12px;
+        font-size: 0.98rem;
+      }
+
+      .model-answer strong {
+        color: var(--accent);
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      /* Simulator Callout */
+      .sim-callout {
+        border: 1px dashed rgba(29, 78, 216, 0.6);
+        padding: 10px 12px;
+        margin: 14px 0 8px;
+        text-align: left;
+        font-size: 0.95rem;
+        background: rgba(230, 240, 255, 0.55);
+        border-radius: 12px;
+      }
+
+      .sim-callout a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+
+      /* Media Citation */
+      .media-citation {
+        font-size: 0.85rem;
+        color: var(--muted);
+        font-style: italic;
+        margin-top: 6px;
+        display: block;
+        text-align: right;
+      }
+
+      /* Links in Sources */
+      .sources-list {
+        font-size: 10pt;
+      }
+      .sources-list li {
+        margin-bottom: 5px;
+        word-break: break-all;
+      }
+
+      .common-mistakes {
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        padding: 10px 12px;
+        margin-top: 10px;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        color: #7c2d12;
+      }
+
+      .common-mistakes strong {
+        color: #9a3412;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      
+      pre {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        overflow-x: auto;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body style="">
+    <header>
+      <h1>SRC (VHF) – Kunskapskrav och studieguide (Sverige)</h1>
+      <div class="subtitle">Baserad på NFB “Reviderade kunskapsfordringar SRC 2017-01-01” (med komplettering från kursmaterial)</div>
+      <div class="meta">
+        <div><span class="pill">Praktiskt prov gäller från <strong>2017-07-01</strong></span></div>
+        <div><span class="pill">Använd som checklista + träning av standardfraser</span></div>
+      </div>
+      <div class="note">Detta är en strukturerad studiehjälp: varje krav innehåller en kort förklaring och ett modellsvar (vad du ska kunna säga/göra).</div>
+    </header>
+
+    <div id="toc">
+      <h2>Innehåll</h2>
+      <ul>
+        <li><a href="#sectionA">A. Allmän kännedom om radiokommunikation</a></li>
+        <li><a href="#sectionB">B. Praktisk färdighet i handhavande</a></li>
+        <li><a href="#sectionC">C. Rutiner och praktisk handhavande</a></li>
+        <li><a href="#sectionD">D. Trafikrutiner för radiotelefoni</a></li>
+        <li><a href="#sectionE">E. Föreskrifter för VHF-kommunikation</a></li>
+        <li><a href="#sources">Källor &amp; media</a></li>
+      </ul>
+    </div>
+
+    <!-- Section A -->
+    <section id="sectionA">
+      <h2>A. ALLMÄN KÄNNEDOM OM RADIOKOMMUNIKATION I DEN MARITIMA MOBILA TJÄNSTEN</h2>
+      
+      <h3>A1. Kännedom: Allmänna principer och grundläggande funktioner</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">1.1 Olika typer av kommunikation</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska känna igen vilken typ av radiokommunikation som passar i olika situationer och välja rätt metod (DSC/tal), rätt prioritet och rätt kanal.</p>
+          <ul>
+            <li>
+              <strong>DSC kommunikation (Nöd, il- och varning):</strong>
+              Digitala selektiva anrop via VHF kanal 70 som används för att snabbt larma (Distress) eller annonsera att ett Urgency/Safety-meddelande följer.
+              Efter DSC följer normalt taltrafik på kanal 16 eller angiven arbetskanal.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag kan sända DSC Distress på kanal 70 och därefter läsa upp nödmeddelandet på kanal 16.”
+              </div>
+              <div class="common-mistakes"><strong>Vanliga misstag</strong>
+                Att prata på kanal 70 (förbjudet) eller att glömma att följa upp DSC-larm med röstmeddelande.
+              </div>
+            </li>
+            <li>
+              <strong>Search and Rescue (SAR) kommunikation:</strong>
+              Kommunikation kopplad till räddningsinsats: mellan nödställd, JRCC/Sweden Rescue, räddningsenheter (SSRS, Kustbevakningen, helikopter) och eventuellt OSC.
+              Kan ske på kanal 16 eller av JRCC anvisad arbetskanal.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag lyssnar på kanal 16, följer JRCC:s instruktioner och byter kanal när räddningsledaren anger det.”
+              </div>
+            </li>
+            <li>
+              <strong>Rutintrafik och kanalval L1, L2, 72 och 77:</strong>
+              Vanlig kommunikation mellan fritidsbåtar (båt–båt). Anrop sker ofta på kanal 16 och flyttas därefter till en arbetskanal (t.ex. 72/77 eller L1/L2 om installerade och överenskomna).
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag anropar på 16 och föreslår ‘Gå till kanal 72’. Själva samtalet sker på 72/77 (eller L1/L2).”
+              </div>
+            </li>
+            <li>
+              <strong>Hamn- och VTS- trafik:</strong>
+              Kommunikation med hamnmyndighet, brovakt, sluss, lots eller VTS (trafikledning) för säker passage, trafikinfo och instruktioner.
+              Kanaler är lokala och anges i VHF-karta/UFS/hamnens anvisningar.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag tar reda på VTS/hamnkanal i förväg och håller meddelandet kort: fartyg, position, avsikt.”
+              </div>
+            </li>
+            <li>
+              <strong>Intership kommunikation:</strong>
+              Kommunikation fartyg–fartyg för samordning och sjösäkerhet (t.ex. möte i trång farled). Ofta på kanal 6/8/72/77 beroende på situation och lokal praxis.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag kontaktar motgående fartyg på lämplig intership-kanal och bekräftar överenskommelse tydligt.”
+              </div>
+            </li>
+            <li>
+              <strong>Intern radiokommunikation ombord, kanal 15 och 17:</strong>
+              Kortdistans ombord/ombordnära med max 1 W (t.ex. mellan brygga och fördäck, eller båt–jolle vid manöver). Ska inte användas för allmän trafik.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Kanal 15/17 använder jag endast ombord och alltid på låg effekt (1 W).”
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.2 Olika typer av radiostationer</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska förstå vem du pratar med, vilken roll stationen har och varför den kan be dig byta kanal eller upprepa information.</p>
+          <ul>
+            <li>
+              <strong>Fartygstationer:</strong> Radio ombord på fartyg/båt (fast VHF eller bärbar). Identifieras med anropssignal och/eller MMSI.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Min båt är en fartygstation och har anropssignal samt MMSI för DSC.”
+              </div>
+            </li>
+            <li>
+              <strong>Kustradiostationer:</strong> Landbaserade stationer som tillhandahåller radiotjänster (t.ex. Stockholmradio). Kan koppla telefonsamtal, lämna serviceinfo och förmedla MSI.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag kan anropa Stockholmradio för förbindelseprov eller service och blir då anvisad en arbetskanal.”
+              </div>
+            </li>
+            <li>
+              <strong>Sjöräddningscentraler (MRCC/JRCC):</strong> Räddningscentral som leder sjöräddning och samordnar resurser. I Sverige: JRCC (”Sweden Rescue”).
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Vid nöd är det JRCC som leder insatsen och kan be mig rapportera läge, position och ETA.”
+              </div>
+            </li>
+            <li>
+              <strong>Lots, VTS och hamnstationer:</strong> Trafikledning och service i farleder/hamnar. Kan ge instruktioner för säker passage.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag följer VTS/hamnens kanal och rapporteringskrav enligt lokala regler.”
+              </div>
+            </li>
+            <li>
+              <strong>Luftradiostationer (SAR-enheter):</strong> Räddningshelikopter/flyg som deltar i insats. Kan kommunicera direkt med fartyg på VHF.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag kan ge tydliga positionsuppgifter till helikopter och bekräfta instruktioner (read back).”
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.3 Allmän kunskap om VHF-radio kanaler</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska förstå grunderna i kanalplanen, kunna skilja på simplex/duplex och veta vilka kanaler som används till vad i svensk sjöfart.</p>
+          <ul>
+            <li>
+              <strong>Begreppet frekvens:</strong> En kanal motsvarar en (eller två) frekvenser i MHz. Sjö-VHF ligger i praktiken i området 156–174 MHz.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”En VHF-kanal är en frekvensuppsättning. På duplex har jag en sänd- och en mottagningsfrekvens.”
+              </div>
+            </li>
+            <li>
+              <strong>Vågutbredning och räckvidd:</strong> VHF är i huvudsak fri sikt (radiohorisont). Antennhöjd och installation avgör räckvidd.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag förväntar mig kortare räckvidd med handburen VHF än med fast VHF och masttoppantenn.”
+              </div>
+            </li>
+            <li>
+              <strong>Begreppen: simplex, semi-duplex och duplex:</strong> Simplex: samma frekvens i båda riktningar. Duplex: olika sänd/mottag. Semi-duplex används ibland som praktisk beskrivning av kuststationstrafik.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Båt–båt är simplex. Kuststationstrafik kan vara duplex på vissa trafikkanaler.”
+              </div>
+            </li>
+            <li>
+              <strong>Användning och begränsningar på VHF-kanaler:</strong> Vissa kanaler är reserverade (t.ex. kanal 70 för DSC). Vissa kanaler kräver låg effekt (t.ex. 15/17) eller är skyddskanaler nära 16 (75/76).
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag vet att kanal 70 är DSC och att jag ska minimera trafik på kanal 16.”
+              </div>
+            </li>
+            <li>
+              <strong>Nöd- och säkerhetskanaler:</strong> Kanal 16 (tal) är nöd-, säkerhets- och anropskanal. Kanal 70 är DSC-kanal.
+              <div class="common-mistakes"><strong>Vanliga misstag</strong>
+                Att använda kanal 16 för långa privata samtal eller att tro att DSC på kanal 70 ersätter röstmeddelandet.
+              </div>
+            </li>
+            <li>
+              <strong>Anropskanaler:</strong> Anrop sker normalt på kanal 16 eller via DSC. Efter etablerad kontakt flyttas kommunikationen till arbetskanal.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag anropar på 16, får svar, och säger ‘Gå till kanal 72’.”
+              </div>
+            </li>
+            <li>
+              <strong>Kanaler för trafik mellan fartyg:</strong> Vanliga båt–båt-kanaler är 6, 8, 72 och 77 samt L1/L2 (om installerade).
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag använder 72/77 för båt–båt och undviker att belasta kanal 16.”
+              </div>
+            </li>
+            <li>
+              <strong>Hamntrafik, navigationssäkerhetskanaler:</strong> Hamnar/VTS/broar använder lokala kanaler (t.ex. 12/14 m.fl.). Kanal 75/76 används för navigationsrelaterad trafik med försiktighet för att inte störa kanal 16.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Jag tar reda på lokal hamn/VTS-kanal i förväg och följer instruktionerna.”
+              </div>
+            </li>
+            <li>
+              <strong>Kanaler för allmän kommunikation:</strong> Kustradio/landstationer kan använda särskilda arbetskanaler (trafikkanaler) för service och radiotelefonisamtal.
+              <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+                ”Efter anrop på 16 går jag över till den arbetskanal kuststationen anger.”
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">Tabell: Vanliga VHF-kanaler/frekvenser i svenska farvatten (översikt)</span>
+        <div class="explanation">
+          <p><strong>Observera:</strong> Lokala hamn-/VTS-/bro-/slusskanaler varierar med område. Använd alltid aktuell VHF-karta/UFS/hamnens anvisningar.
+            Tabellen nedan är en praktisk <em>översikt</em> för SRC-nivå och täcker de vanligaste kanalerna som ofta förekommer i utbildning och fritidsbåtbruk.</p>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Kanal</th>
+                  <th>Frekvens (MHz)</th>
+                  <th>Typ (tal/DSC)</th>
+                  <th>Typisk användning</th>
+                  <th>Kommentar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>16</strong></td>
+                  <td>156,800</td>
+                  <td>Tal</td>
+                  <td>Nöd, säkerhet, anrop</td>
+                  <td>Håll kort; flytta till arbetskanal</td>
+                </tr>
+                <tr>
+                  <td><strong>70</strong></td>
+                  <td>156,525</td>
+                  <td>DSC</td>
+                  <td>Digitala anrop/larm (Distress/Urgency/Safety/Routine)</td>
+                  <td>Ingen taltrafik</td>
+                </tr>
+                <tr>
+                  <td><strong>72</strong></td>
+                  <td>156,625</td>
+                  <td>Tal (simplex)</td>
+                  <td>Fartyg–fartyg (intership), fritidsbåt</td>
+                  <td>Vanlig arbetskanal efter anrop på 16</td>
+                </tr>
+                <tr>
+                  <td><strong>77</strong></td>
+                  <td>156,875</td>
+                  <td>Tal (simplex)</td>
+                  <td>Fartyg–fartyg (intership), fritidsbåt</td>
+                  <td>Vanlig arbetskanal efter anrop på 16</td>
+                </tr>
+                <tr>
+                  <td><strong>6</strong></td>
+                  <td>156,300</td>
+                  <td>Tal (simplex)</td>
+                  <td>Intership (yrkessjöfart) / ibland säkerhetsrelaterat</td>
+                  <td>Använd med radiodisciplin</td>
+                </tr>
+                <tr>
+                  <td><strong>8</strong></td>
+                  <td>156,400</td>
+                  <td>Tal (simplex)</td>
+                  <td>Intership, säkerhets-/samordningstrafik</td>
+                  <td>Används ofta i utbildningsexempel</td>
+                </tr>
+                <tr>
+                  <td><strong>13</strong></td>
+                  <td>156,650</td>
+                  <td>Tal (simplex)</td>
+                  <td>”Bridge-to-bridge” (säkerhetsrelaterad fartyg–fartyg)</td>
+                  <td>Vanligare för större fartyg; kan förekomma lokalt</td>
+                </tr>
+                <tr>
+                  <td><strong>15</strong></td>
+                  <td>156,750</td>
+                  <td>Tal (simplex)</td>
+                  <td>Intern/ombordkommunikation (låg effekt)</td>
+                  <td>Max 1 W</td>
+                </tr>
+                <tr>
+                  <td><strong>17</strong></td>
+                  <td>156,850</td>
+                  <td>Tal (simplex)</td>
+                  <td>Intern/ombordkommunikation (låg effekt)</td>
+                  <td>Max 1 W</td>
+                </tr>
+                <tr>
+                  <td><strong>75</strong></td>
+                  <td>156,775</td>
+                  <td>Tal (simplex)</td>
+                  <td>Navigationsrelaterad trafik (begränsad)</td>
+                  <td>Använd med försiktighet för att inte störa kanal 16; ofta 1 W</td>
+                </tr>
+                <tr>
+                  <td><strong>76</strong></td>
+                  <td>156,825</td>
+                  <td>Tal (simplex)</td>
+                  <td>Navigationsrelaterad trafik (begränsad)</td>
+                  <td>Använd med försiktighet; ofta 1 W</td>
+                </tr>
+                <tr>
+                  <td><strong>L1</strong></td>
+                  <td>155,500</td>
+                  <td>Tal (simplex)</td>
+                  <td>Fritidsbåt–fritidsbåt (Nordiska farvatten)</td>
+                  <td>Kan vara extra kanal beroende på radio/installation</td>
+                </tr>
+                <tr>
+                  <td><strong>L2</strong></td>
+                  <td>155,525</td>
+                  <td>Tal (simplex)</td>
+                  <td>Fritidsbåt–fritidsbåt (Nordiska farvatten)</td>
+                  <td>Kan vara extra kanal beroende på radio/installation (obs: nära DSC kanal 70)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" style="text-align:left; margin-top: 0.5rem;">
+            För exakta arbetskanaler för Stockholmradio, VTS och hamnar i Sverige: använd aktuell VHF-karta/UFS.
+          </p>
+        </div>
+      </div>
+
+      <h3>A2. Kännedom: Systemöversikt GMDSS struktur</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">2.1 Systemets uppbyggnad (Struktur, Blockdiagram)</span>
+        <div class="explanation">
+          GMDSS (Global Maritime Distress and Safety System) bygger på att larm ska kunna ske via minst två oberoende system (t.ex. VHF+DSC och EPIRB). Larmet går från fartyg till land (RCC/JRCC) som leder insatsen.
+        </div>
+        <pre>FARTYG (Nödställd)      SAT/LAND        RÄDDNINGSCENTRAL
+[ VHF/DSC ] ----------&gt; [ Kustradio ] ----&gt; [ JRCC ]
+[ EPIRB ] ------------&gt; [ Satellit ] -----&gt; [ JRCC ]
+[ Inmarsat ] ---------&gt; [ Satellit ] -----&gt; [ JRCC ]
+[ SART ] -------------&gt; [ Radar på räddande fartyg/flyg ]
+        </pre>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "Systemet säkrar att larm når land. Det består av radio (VHF/MF/HF) och satellitsystem (Inmarsat/Cospas-Sarsat)."
+        </div>
+      </div>
+
+      <h3>A3. Kännedom: Search and Rescue (SAR)</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">SAR-organisation och kommunikation</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>SAR regioner:</strong> Geografiska ansvarsområden (SRR) uppdelade mellan länder.</li>
+            <li><strong>Räddningscentralens uppgift (JRCC):</strong> Ta emot larm, leda och koordinera insatser dygnet runt.</li>
+            <li><strong>Sjöräddningsorganisationen:</strong> I Sverige ansvarar Sjöfartsverket. Resurser: SSRS, Kustbevakningen, Sjöfartsverket, m.fl.</li>
+            <li><strong>SAR kommunikation inkl. OSC:</strong> On-Scene Coordinator (OSC) kan utses på plats för att leda lokal trafik, ofta på kanal 16, 67 eller 6.</li>
+          </ul>
+        </div>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "JRCC leder insatsen. På plats kan en OSC samordna enheterna. Jag följer deras instruktioner."
+        </div>
+      </div>
+
+      <h3>A4. Kännedom: Maritime Safety Information (MSI)</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">NAVTEX-systemet</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Syfte och funktioner:</strong> Mottagare som automatiskt skriver ut navigations- och vädervarningar (MSI) samt nödinfo.</li>
+            <li><strong>Meddelandeformat:</strong> ZCZC B1B2B3B4 (Sändar-ID, Ämneskod, Numrering).</li>
+            <li><strong>Val av sändare och meddelandetyp:</strong> Användaren programmerar vilka stationer och meddelandetyper som ska tas emot.</li>
+            <li><strong>Meddelanden som inte kan avvisas:</strong> Nöd, navigationsvarningar och meteorologiska varningar (A, B, D, L) kan inte väljas bort.</li>
+          </ul>
+        </div>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "NAVTEX (518 kHz) ger mig skriftliga varningar. Jag kan välja bort viss info, men inte nöd- och navigationsvarningar."
+        </div>
+      </div>
+    </section>
+
+    <!-- Section B -->
+    <section id="sectionB">
+      <h2>B. PRAKTISK FÄRDIGHET I HANDHAVANDE AV RADIOUTRUSTNING</h2>
+      
+      <h3>B1. Färdighet: Handhavande av VHF</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">1.1 Inställning av kanaler</span>
+        <div class="explanation">
+          <strong>Val av kanal:</strong> Kunna byta kanal snabbt.<br>
+          <strong>Dual Watch (DW):</strong> Passa kanal 16 samtidigt som en annan kanal (t.ex. arbetskanal).
+        </div>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "Jag ställer in kanal 16 som huvudkanal. Med Dual Watch kan jag lyssna på 72 samtidigt."
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.2 Grundläggande funktioner och användning</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Strömförsörjning:</strong> På/Av, batteristatus.</li>
+            <li><strong>Push To Talk (PTT):</strong> Tryck för att tala, släpp för att lyssna.</li>
+            <li><strong>Hög/låg uteffekt:</strong> 25W (Hi) för lång räckvidd, 1W (Lo) för hamn/nära. 1W sparar batteri och minskar störningar.</li>
+            <li><strong>Volym &amp; Squelch:</strong> Squelch ska ställas precis så att bruset tystnar ("tröskeln").</li>
+            <li><strong>Dimmer:</strong> Justera ljusstyrka för natt/dag.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>B2. Färdighet: Digital Selective Calling (DSC)</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">2.1 Anropskategorier, prioritet samt definitioner</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Distress:</strong> Nödtrafik (Högsta prio).</li>
+            <li><strong>Urgency:</strong> Iltrafik (Viktigt, ej omedelbar fara).</li>
+            <li><strong>Safety:</strong> Varningstrafik (Nav/vädervarning).</li>
+            <li><strong>Routine:</strong> Rutintrafik (Vanliga samtal).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">2.2 Olika typer av anrop</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Distress (Nödlarm):</strong> "All ships" (automatiskt).</li>
+            <li><strong>All stations:</strong> Anrop till alla fartyg (t.ex. vid Urgency/Safety).</li>
+            <li><strong>Individual:</strong> Anrop till ett specifikt MMSI.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">2.3 Maritime Mobile Service Identity, (MMSI)</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Landsnummer (MID):</strong> 3 siffror (Sverige = 265 eller 266).</li>
+            <li><strong>Fartyg:</strong> MID + 6 siffror (totalt 9).</li>
+            <li><strong>Landstation:</strong> 00 + MID + 4 siffror.</li>
+            <li><strong>Grupp:</strong> 0 + MID + 5 siffror.</li>
+          </ul>
+        </div>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "Mitt MMSI är unikt. Landstationer börjar med 00, grupper med 0."
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">2.4 Funktioner och användning</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Distress knappen:</strong> Skyddad knapp. Hålls in (ofta 5 sek) för att larma.</li>
+            <li><strong>Inmatning av data:</strong> Välja typ av nöd (Nature of Distress) om tid finns.</li>
+            <li><strong>Position:</strong> Ska uppdateras automatiskt via GPS. Om ej, manuell inmatning var 4:e timme.</li>
+            <li><strong>Mottagna meddelanden:</strong> Kunna läsa och kvittera (vid behov) inkomna DSC-anrop.</li>
+          </ul>
+        </div>
+        <div class="common-mistakes">
+          <strong>Vanliga misstag</strong>
+          Att testa Distress-knappen skarpt. Gör ALDRIG det. Använd radions inbyggda testfunktion (mot eget MMSI eller testanrop) om tillgängligt.
+        </div>
+      </div>
+
+      <h3>B3. Kännedom: Antenner, sammankoppling av utrustning, kraftkällor</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">3.1-3.3 Installation och underhåll</span>
+        <div class="explanation">
+          <strong>Antenner:</strong> Ska placeras högt och fritt (vertikal polarisation).<br>
+          <strong>Sammankoppling:</strong> VHF bör kopplas till GPS för att DSC-larm ska innehålla position.<br>
+          <strong>Kraftkällor:</strong> Batterier (bly/gel/AGM). Bör ha separat radiobatteri eller reservkraft. Underhållsladdning och kontroll av poler/vätskenivå är viktigt.
+        </div>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "Antennen ska sitta högt. Radion ska ha ström från ett friskt batteri och position från GPS."
+        </div>
+      </div>
+    </section>
+
+    <!-- Section C -->
+    <section id="sectionC">
+      <h2>C. RUTINER OCH PRAKTISK HANDHAVANDE</h2>
+      
+      <h3>C1. Kunskap: Åtgärder vid DSC kommunikation, distress, urgency och safety</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">1.1 Nödkommunikation (Distress)</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Sändning av distress alert:</strong> Tryck röd knapp. Vänta på kvittens.</li>
+            <li><strong>Mottagning och kvittering från landstation:</strong> DSC tystnar. Gå till kanal 16.</li>
+            <li><strong>Mottagning av återutsänt larm (Relay):</strong> Lyssna på kanal 16. Kvittera ej med DSC (om du inte är kuststation).</li>
+            <li><strong>Utsändning av larm från station ej i nöd (Relay):</strong> "Mayday Relay" via tal eller DSC om den nödställde inte kan larma själv.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.2 Il- och varningskommunikation</span>
+        <div class="explanation">
+          DSC-anrop med prioritet Urgency eller Safety sänds först på kanal 70 ("All ships" eller område). Därefter sänds röstmeddelandet på angiven kanal (ofta 16 eller trafikkanal).
+        </div>
+      </div>
+
+      <h3>C2. Kunskap: Skydd av nödfrekvenser</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">2.1-2.3 Störningar och falsklarm</span>
+        <div class="explanation">
+          Undvik onödig trafik på kanal 16 och 70. Blockera inte nödtrafik.
+          Sändning under pågående nödtrafik är förbjudet om du inte bistår.
+          Skydda utrustningen mot obehörig användning och lek.
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">2.6 Återkallande av felaktigt nödlarm</span>
+        <div class="explanation">
+          Om du råkar sända DSC-larm av misstag:
+          1. Stäng av radion (för att stoppa omsändning).
+          2. Slå på, gå till Kanal 16.
+          3. Sänd: "All stations" x3, "This is [My Name]", "Cancel DSC Alert sent by mistake", "Over".
+        </div>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "Jag stänger av sändaren, startar om och ropar ut på kanal 16 att larmet var ett misstag."
+        </div>
+      </div>
+
+      <h3>C3. Kännedom: Larm, kommunikation och lokaliseringssignaler</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">3.1 EPIRB (406 MHz / 121,5 MHz)</span>
+        <div class="explanation">
+          Satellitnödsändare. Ska registreras. Aktiveras manuellt eller via hydrostat (vattentryck). Sänder ID till satellit och pejlsignal (121,5) till flyg.
+          Kontrollera batteriets utgångsdatum och gör funktionsprov (testläge).
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">3.2 SART (Radar Transponder)</span>
+        <div class="explanation">
+          Radarsvarare. Tas med i livflotten. Startas manuellt. När den träffas av X-band radar (3 cm) syns 12 prickar på räddningsfartygets radar.
+          Finns även som AIS-SART (sänder GPS-position på AIS).
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">3.3 Bärbar VHF</span>
+        <div class="explanation">
+          För kommunikation i livbåt/livflotte. GMDSS-klassade handapparater ska vara gula/orange och ha ett speciellt nödbatteri (plomberat, ej laddningsbart) plus ett bruksbatteri.
+        </div>
+      </div>
+    </section>
+
+    <!-- Section D -->
+    <section id="sectionD">
+      <h2>D. TRAFIKRUTINER FÖR RADIOTELEFONI</h2>
+      
+      <h3>D1. Kunskap: Säkerhetsmeddelanden och procedurer</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">1.1 Nödkommunikation (Distress)</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Nödsignal:</strong> MAYDAY.</li>
+            <li><strong>Nödanrop:</strong> MAYDAY x3, "This is" [Namn/Signal] x3.</li>
+            <li><strong>Nödmeddelande (MIRN):</strong> MAYDAY, Namn, Position, Vad som hänt, Hjälpbehov, Antal personer.</li>
+            <li><strong>Kvittens:</strong> RECEIVED MAYDAY (sägs av kuststation eller fartyg).</li>
+            <li><strong>Seelonce Mayday / Feenee:</strong> Påbud om tystnad / Nödtrafik avslutad.</li>
+            <li><strong>Mayday Relay:</strong> "Mayday Relay" x3... Sänds för annan parts räkning.</li>
+          </ul>
+        </div>
+        <div class="model-answer">
+          <strong>Modellsvar / Vad du ska kunna</strong>
+          "MAYDAY... Här är [Namn]... Position... Brand... Begär assistans... 4 man."
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.2 Iltrafik (Urgency)</span>
+        <div class="explanation">
+          <strong>Signal:</strong> PAN-PAN (x3).<br>
+          Används vid brådskande ärende som rör säkerhet men ej omedelbar fara (t.ex. mastbrott, sjukdom/Radiomedical).
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.3 Varningstrafik (Safety)</span>
+        <div class="explanation">
+          <strong>Signal:</strong> SECURITÉ (uttalas 'Sä-kju-ri-té') (x3).<br>
+          Används för navigationsvarningar, vädervarningar (MSI).
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.4 &amp; 1.5 Marinengelska och bokstavering</span>
+        <div class="explanation">
+          Kunna bokstavera (Alfa, Bravo, Charlie...) och siffror (Wun, Too, Tree...). Kunna standardfraser: "I spell", "Say again", "Over", "Out".
+        </div>
+      </div>
+
+      <h3>D2. Kunskap: Trafikrutiner</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">2.1-2.2 Rutiner och anrop</span>
+        <div class="explanation">
+          Använd anropssignal. Håll trafik kort. Vid obesvarat anrop: vänta innan nytt försök.
+          Anrop till kuststation sker på deras arbetskanal (se karta) eller 16. Kuststation anropar ofta på 16 eller via trafiklista.
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">2.3 Trafikavgifter (AAIC)</span>
+        <div class="explanation">
+          Vissa samtal via kustradio debiteras. AAIC (Accounting Authority Identification Code) identifierar vem som betalar (t.ex. SW01 för Stockholmradio).
+        </div>
+      </div>
+    </section>
+
+    <!-- Section E -->
+    <section id="sectionE">
+      <h2>E. FÖRESKRIFTER FÖR VHF-KOMMUNIKATION</h2>
+      
+      <h3>E1. Kännedom: Regler, rutiner och tillämpningar</h3>
+      
+      <div class="req-item">
+        <span class="req-bullet">Dokumentation</span>
+        <div class="explanation">
+          Kännedom om ITU-publikationer: "List of Coast Stations", "List of Ship Stations". Nationella handböcker (Ufs, Stockholmradios handbok).
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.2 Internationella regler och avtal</span>
+        <div class="explanation">
+          <ul>
+            <li><strong>Radiooperatörscertifikat (SRC):</strong> Personligt bevis på kompetens.</li>
+            <li><strong>Radiotillstånd:</strong> För fartygets utrustning (från PTS).</li>
+            <li><strong>Radiologgbok:</strong> Krav för yrkesfartyg (rekommenderas för fritid vid nödtrafik).</li>
+            <li><strong>Tystnadsplikt:</strong> Ej avslöja innehåll i andras meddelanden.</li>
+            <li><strong>Förbjudna utsändningar:</strong> Falska larm, onödiga signaler, utan ID.</li>
+            <li><strong>Passning:</strong> Krav att passa Nödkanal (16/70) till sjöss.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.3 Svensk lag (LEK) och förordning</span>
+        <div class="explanation">
+          Lagen om elektronisk kommunikation (2003:389). Reglerar tillstånd, tillsyn (PTS), störningar och straffansvar (t.ex. för olovlig sändning). Även bestämmelser för krig/krigsfara.
+        </div>
+      </div>
+    </section>
+
+    <!-- Lexikon Section -->
+    <section id="lexikon">
+      <h2>Lexikon (tekniska/VHF/maritima termer) + Bokstavering</h2>
+      <p class="note" style="text-align:left; margin-top: 0.5rem;">
+        Nedan finns en kort förklaring av de vanligaste tekniska, VHF- och maritima begrepp som används i detta dokument.
+        Avslutningsvis finns internationellt bokstaveringsalfabet (NATO/ITU) samt uttal av siffror (marinengelska).
+      </p>
+
+      <h3>Termer</h3>
+      <div class="req-item">
+        <span class="req-bullet">AC (växelström)</span>
+        <div class="explanation">Alternating Current. Växelström, t.ex. från elnät (vägguttag). Motsats till DC.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">AAIC / Avräkningskod (Accounting Authority Identification Code)</span>
+        <div class="explanation">Kod som anger vilket avräkningsorgan som debiterar kostnader för radiosamtal via kuststation (t.ex. SW01).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">AIS (Automatic Identification System)</span>
+        <div class="explanation">System där fartyg sänder ut identitet, position, kurs och fart via VHF så att andra kan se dem på plotter/dator.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">ARCC (Aeronautical Rescue Coordination Centre)</span>
+        <div class="explanation">Flygräddningscentral. I Sverige är sjö- och flygräddning samordnad i JRCC.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Bärbar VHF</span>
+        <div class="explanation">Handhållen VHF-radio. Används ofta som reserv, i jolle/livflotte och nära förbindelser. Kortare räckvidd än fast installation.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">DC (likström)</span>
+        <div class="explanation">Direct Current. Likström, t.ex. från båtbatteri. Motsats till AC.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">DSC (Digital Selective Calling)</span>
+        <div class="explanation">Digitalt anrops- och larmsystem på VHF kanal 70. Använder MMSI som adress. Används för Distress/Urgency/Safety/Routine-anrop.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Dual Watch (DW)</span>
+        <div class="explanation">Funktion där radion passar kanal 16 (och ibland 70) samtidigt som vald arbetskanal.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Duplex</span>
+        <div class="explanation">Sändning och mottagning sker på olika frekvenser. Vanligt vid trafik med kuststation på vissa trafikkanaler.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">EPIRB (Emergency Position Indicating Radio Beacon)</span>
+        <div class="explanation">Satellitnödsändare (typiskt 406 MHz) som larmar via satellitsystem till RCC/JRCC. Har ofta även 121,5 MHz pejlsignal.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">FEENEE (Seelonce Feenee)</span>
+        <div class="explanation">Meddelar att nödtrafiken är avslutad och att kanalen åter är fri. Uttalas ungefär “fii-nii”.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Frekvens</span>
+        <div class="explanation">Antal svängningar per sekund, mäts i Hz. VHF-kanaler är frekvenstilldelningar i MHz-området.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">GMDSS (Global Maritime Distress and Safety System)</span>
+        <div class="explanation">Internationellt säkerhetssystem för sjöfarten som definierar larmvägar, prioriteringar och utrustning för nöd och säkerhet.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">GPS / GNSS</span>
+        <div class="explanation">Satellitbaserat positioneringssystem. Kopplas ofta till VHF/DSC så att nödlarm innehåller korrekt position och tid.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Intern radiokommunikation (kanal 15/17)</span>
+        <div class="explanation">Kanaler avsedda för ombord-/kortdistanskommunikation med låg effekt (max 1 W). Inte för allmän radiotrafik.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Intership</span>
+        <div class="explanation">Trafik mellan fartyg/båtar (ship-to-ship), t.ex. för säkerhetsinformation eller samordning.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">JRCC (Joint Rescue Coordination Centre) / “Sweden Rescue”</span>
+        <div class="explanation">Sveriges gemensamma sjö- och flygräddningscentral (Göteborg). Tar emot larm och leder SAR-insatser.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Kanal 16</span>
+        <div class="explanation">Internationell nöd-, säkerhets- och anropskanal för taltrafik. Ska hållas fri från onödig trafik.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Kanal 70</span>
+        <div class="explanation">DSC-kanal (endast digitala anrop). Ingen taltrafik får förekomma på kanal 70.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Kustradiostation (t.ex. Stockholmradio)</span>
+        <div class="explanation">Landstation som förmedlar radiotrafik och kan ge service, MSI och koppla telefonsamtal via sjöradionätet.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">LEK (Lagen om elektronisk kommunikation, 2003:389) + förordning (2003:396)</span>
+        <div class="explanation">Svensk lagstiftning som reglerar tillstånd, tillsyn, störningar och sanktioner för elektronisk kommunikation (PTS är tillsynsmyndighet).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">L1 / L2</span>
+        <div class="explanation">Fritidsbåtskanaler (nordiska farvatten) som vissa apparater kan ha installerade för båt–båt-kommunikation.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">MAYDAY</span>
+        <div class="explanation">Nödsignal (Distress). Används vid omedelbar fara för liv/fartyg. Högsta prioritet.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">MAYDAY RELAY</span>
+        <div class="explanation">Nödmeddelande som vidaresänds av annan station (t.ex. om nödställd inte kan sända eller inte får svar).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">MID (Maritime Identification Digits)</span>
+        <div class="explanation">Tresiffrig landskod i MMSI. Sverige har bl.a. MID 265 och 266.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">MIRN (tumregel för nödmeddelande)</span>
+        <div class="explanation">Kom-ihåg-struktur för nödmeddelande: Mayday, Identification, Reason/Position, Nature/Need for assistance.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">MMSI (Maritime Mobile Service Identity)</span>
+        <div class="explanation">9-siffrig digital identitet för fartyg och stationer, används för DSC och AIS. Tilldelas i Sverige av PTS.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">MRCC / RCC</span>
+        <div class="explanation">Rescue Coordination Centre. MRCC är sjöräddningscentral. I Sverige används JRCC som gemensam central.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">MSI (Maritime Safety Information)</span>
+        <div class="explanation">Navigationsvarningar, vädervarningar/prognoser och annan säkerhetsinformation som sänds via t.ex. VHF och NAVTEX.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">NAVTEX</span>
+        <div class="explanation">Automatiskt textsändningssystem för MSI, normalt på 518 kHz (engelska) och ibland 490 kHz (nationellt språk).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Nöd-/il-/varningstrafik (Distress / Urgency / Safety)</span>
+        <div class="explanation">Prioriteringsordning i maritim radiokommunikation: Distress (MAYDAY), Urgency (PAN-PAN), Safety (SECURITÉ), därefter Routine.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">OSC (On-Scene Coordinator)</span>
+        <div class="explanation">Utses av räddningscentralen vid större insats för att samordna resurser på plats och rapportera till JRCC.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">PAN-PAN</span>
+        <div class="explanation">Ilsignal (Urgency). Brådskande situation som rör säkerhet men utan omedelbar livsfara.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Passning</span>
+        <div class="explanation">Att kontinuerligt lyssna (”passa”) på angivna kanaler, typiskt kanal 16 (tal) och kanal 70 (DSC).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">PLB (Personal Locator Beacon)</span>
+        <div class="explanation">Personlig nödsändare som fungerar liknande EPIRB men är avsedd för person/land. Kan förekomma även i marin miljö.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">PTT (Push-To-Talk)</span>
+        <div class="explanation">Sändknapp på mikrofonen. Tryck för att sända, släpp för att lyssna.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Radiomedical</span>
+        <div class="explanation">Radiomedicinsk rådgivning: kontakt via radio/telefon för medicinsk hjälp till sjöss, ofta via kuststation/JRCC.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Rutintrafik (Routine)</span>
+        <div class="explanation">All vanlig radiotrafik som inte är nöd/il/varning. Ska hållas på arbetskanaler, inte kanal 16.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">SAR (Search and Rescue)</span>
+        <div class="explanation">Sök- och räddningsinsatser till sjöss/luft. Leds av RCC/JRCC inom en SAR-region (SRR).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">SECURITÉ</span>
+        <div class="explanation">Varningssignal (Safety). Används för navigations- och vädervarningar som påverkar säkerheten.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Semi-duplex</span>
+        <div class="explanation">Begrepp som ibland används för kuststationstrafik där kanaluppdelningen gör att man sänder och tar emot på olika frekvenser men inte samtidigt som telefon (praktiskt likt duplex för användaren).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Seelonce Mayday</span>
+        <div class="explanation">Uppmaning att vara tyst på kanalen under pågående nödtrafik. Kan sändas av nödställd eller den som leder trafiken.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Simplex</span>
+        <div class="explanation">Sändning och mottagning på samma frekvens (”en i taget”). Vanligt för båt–båt på VHF.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Squelch</span>
+        <div class="explanation">Brusspärr. Justeras så att bakgrundsbrus tystnar utan att svaga signaler blockeras.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">SRR (Search and Rescue Region)</span>
+        <div class="explanation">Geografiskt ansvarsområde för SAR. Sverige ansvarar inom svensk SRR, inklusive stora sjöar.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">Stockholmradio</span>
+        <div class="explanation">Sveriges civila kustradiostation som bemannar kustradionätet och ger service till sjöfarten.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">SART / AIS-SART (Search and Rescue Transponder/Transmitter)</span>
+        <div class="explanation">Utrustning för lokalisering vid räddning: SART syns på radar, AIS-SART sänder position via AIS.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">UTC</span>
+        <div class="explanation">Koordinerad universell tid, används i sjöfartsrapporter och varningar. Sverige: UTC+1 (normaltid), UTC+2 (sommartid).</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">UFS (Underrättelser för sjöfarande)</span>
+        <div class="explanation">Sjöfartsverkets publikation med information om farleder, varningar och sjösäkerhetsinformation.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">VHF</span>
+        <div class="explanation">Very High Frequency (30–300 MHz). Sjö-VHF använder kanaler runt 156–174 MHz.</div>
+      </div>
+      <div class="req-item">
+        <span class="req-bullet">VTS (Vessel Traffic Service)</span>
+        <div class="explanation">Trafikledning för sjöfart i vissa områden (hamnar/farleder). Ger råd/information och kan ge instruktioner för säker passage.</div>
+      </div>
+
+      <h3>Bokstavering (Internationellt bokstaveringsalfabet)</h3>
+      <div class="req-item">
+        <span class="req-bullet">Bokstavering (A–Z)</span>
+        <div class="explanation">
+          <div style="columns: 2; column-gap: 2rem;">
+            <ul>
+              <li>A – Alfa</li>
+              <li>B – Bravo</li>
+              <li>C – Charlie</li>
+              <li>D – Delta</li>
+              <li>E – Echo</li>
+              <li>F – Foxtrot</li>
+              <li>G – Golf</li>
+              <li>H – Hotel</li>
+              <li>I – India</li>
+              <li>J – Juliett</li>
+              <li>K – Kilo</li>
+              <li>L – Lima</li>
+              <li>M – Mike</li>
+              <li>N – November</li>
+              <li>O – Oscar</li>
+              <li>P – Papa</li>
+              <li>Q – Quebec</li>
+              <li>R – Romeo</li>
+              <li>S – Sierra</li>
+              <li>T – Tango</li>
+              <li>U – Uniform</li>
+              <li>V – Victor</li>
+              <li>W – Whiskey</li>
+              <li>X – X-ray</li>
+              <li>Y – Yankee</li>
+              <li>Z – Zulu</li>
+            </ul>
+          </div>
+          <p><strong>Exempel:</strong> ”Jag bokstaverar: S – Sierra, E – Echo, A – Alfa.”</p>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">Siffror (marinengelskt uttal)</span>
+        <div class="explanation">
+          <ul>
+            <li>0 – Zero</li>
+            <li>1 – Wun</li>
+            <li>2 – Too</li>
+            <li>3 – Tree</li>
+            <li>4 – Fower</li>
+            <li>5 – Fife</li>
+            <li>6 – Six</li>
+            <li>7 – Seven</li>
+            <li>8 – Eight</li>
+            <li>9 – Niner</li>
+          </ul>
+          <p><strong>Exempel:</strong> MMSI 265123456 uttalas: ”Too Six Fife, Wun Too Tree, Fower Fife Six.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources Section -->
+    <section id="sources">
+      <h2>Källor &amp; media</h2>
+      <p class="note" style="text-align:left; margin-top: 0.5rem;">Strukturen följer NFB:s kunskapsfordringar (Reviderade 2017-01-01) enligt användarens instruktioner.</p>
+      <ul class="sources-list">
+        <li>
+          <a href="https://stockholmradio.se/nya-kunskapskrav-src-vhf-dsc/">Stockholmradio: Nya kunskapskrav SRC</a>
+        </li>
+        <li>
+          <a href="https://www.gg-kamratforening.se/src/avsnitt_1.htm">Distanskurs VHF/SRC - Avsnitt 1-6</a>
+        </li>
+        <li><a href="https://eksamen.kystradio.no/c/webexam/js/vhf/vhf_swedish.html">Simulator (Kystradio/NFB)</a></li>
+        <li><a href="https://www.genspark.ai/api/files/s/KZIz2waJ">SRC – lesson (PDF)</a></li>
+      </ul>
+      <span class="media-citation">Källa (skärmdump): <a href="https://www.genspark.ai/api/files/s/ieR1XBdx">gg-kamratforening</a></span>
+      <span class="media-citation">Källa (skärmdump): <a href="https://www.genspark.ai/api/files/s/xDtvhPKz">Stockholmradio</a></span>
+    </section>
+  
+
+</body></html>
