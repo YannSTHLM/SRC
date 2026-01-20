@@ -783,71 +783,345 @@
       <h3>C1. Kunskap: Åtgärder vid DSC kommunikation, distress, urgency och safety</h3>
       
       <div class="req-item">
-        <span class="req-bullet">1.1 Nödkommunikation (Distress)</span>
+        <span class="req-bullet">1.1 Nödkommunikation (Distress) – Sändning av distress alert</span>
         <div class="explanation">
+          <p><strong>Mål:</strong> Du ska kunna sända ett DSC-nödlarm och följa upp med röstmeddelande enligt korrekt procedur.</p>
           <ul>
-            <li><strong>Sändning av distress alert:</strong> Tryck röd knapp. Vänta på kvittens.</li>
-            <li><strong>Mottagning och kvittering från landstation:</strong> DSC tystnar. Gå till kanal 16.</li>
-            <li><strong>Mottagning av återutsänt larm (Relay):</strong> Lyssna på kanal 16. Kvittera ej med DSC (om du inte är kuststation).</li>
-            <li><strong>Utsändning av larm från station ej i nöd (Relay):</strong> "Mayday Relay" via tal eller DSC om den nödställde inte kan larma själv.</li>
+            <li><strong>Steg 1 – Aktivera DSC-nödlarm:</strong> Öppna skyddslocket och håll Distress-knappen nedtryckt i ~5 sekunder. Radion sänder automatiskt:
+              <ul>
+                <li>MMSI (din identitet)</li>
+                <li>Position och tid (från GPS, eller senast manuellt inmatade)</li>
+                <li>Nature of distress (typ av nöd, om du hunnit välja)</li>
+              </ul>
+            </li>
+            <li><strong>Steg 2 – Vänta på kvittens (ack):</strong> DSC-larmet sänds automatiskt flera gånger tills någon kvitterar (kuststation/JRCC eller fartyg). När kvittens kommer slutar omsändningen.</li>
+            <li><strong>Steg 3 – Följ upp med röst på kanal 16:</strong> Gå direkt till kanal 16 och sänd MAYDAY-meddelande (se D1.1 för format).</li>
+            <li><strong>Fortsättning:</strong> Lyssna på instruktioner från JRCC eller räddande fartyg. Upprepa MAYDAY-meddelandet med intervall tills du får svar.</li>
           </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "Jag trycker och håller Distress-knappen tills larmet går. Sedan går jag till kanal 16 och säger MAYDAY MAYDAY MAYDAY, This is [Namn] x3, MAYDAY [Namn], position, vad som hänt, hjälpbehov, antal personer."
+          </div>
+        </div>
+        <div class="common-mistakes"><strong>Vanliga misstag</strong>
+          Att tro att DSC-larmet är tillräckligt – du måste alltid följa upp med röst på kanal 16. Eller att sända DSC men glömma att position/tid är korrekta (kan fördröja räddning).
         </div>
       </div>
 
       <div class="req-item">
-        <span class="req-bullet">1.2 Il- och varningskommunikation</span>
+        <span class="req-bullet">1.1 (forts.) – Mottagning och kvittering av distress alert från landstation</span>
         <div class="explanation">
-          DSC-anrop med prioritet Urgency eller Safety sänds först på kanal 70 ("All ships" eller område). Därefter sänds röstmeddelandet på angiven kanal (ofta 16 eller trafikkanal).
+          <p><strong>Mål:</strong> Du ska förstå vad som händer när en kuststation/JRCC kvitterar ditt eller någon annans nödlarm.</p>
+          <ul>
+            <li><strong>DSC-kvittens (Distress Acknowledgement):</strong> Kuststationen eller JRCC sänder en DSC-kvittens tillbaka på kanal 70. Din radio visar att larmet är mottaget och slutar omsända.</li>
+            <li><strong>Uppföljning på tal (kanal 16):</strong> JRCC ropar upp den nödställda på kanal 16 (t.ex. "MAYDAY, [Fartyg X], This is [JRCC/Kuststation]"). Därefter ger de instruktioner.</li>
+            <li><strong>Vad du gör:</strong> Om du är den nödställda svarar du och ger uppdaterad info. Om du hör någon annans nödlarm kvitterat av kuststation: lyssna, bistå om du kan, men sända inte på kanal 16 om du inte blir tillfrågad.</li>
+          </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "När JRCC kvitterar mitt DSC-larm slutar radion omsända. Jag lyssnar på kanal 16, svarar på JRCC:s anrop och följer deras instruktioner."
+          </div>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.1 (forts.) – Mottagning av återutsänt distress alert (Relay)</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska veta hur du ska agera när du tar emot ett DSC-nödlarm som vidaresänts (relay) av en kuststation eller annat fartyg.</p>
+          <ul>
+            <li><strong>DSC Distress Relay:</strong> Om den nödställde inte når kuststation direkt, kan ett annat fartyg eller kuststation sända ett "Distress Relay" på DSC kanal 70.</li>
+            <li><strong>Vad visas på din radio:</strong> Du ser ett DSC-meddelande med prioritet Distress och info om den nödställda (MMSI, position, typ av nöd).</li>
+            <li><strong>Vad du gör:</strong>
+              <ul>
+                <li><strong>Kvittera INTE med DSC</strong> om du är ett vanligt fartyg (endast kuststationer/JRCC kvitterar DSC-larm).</li>
+                <li>Gå till kanal 16 och lyssna.</li>
+                <li>På kanal 16 kommer normalt ett röstmeddelande: "MAYDAY RELAY" från den som vidarebefordrar.</li>
+                <li>Om du kan hjälpa (är nära, har kapacitet): rapportera din position och ETA till JRCC eller den som leder trafiken.</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "Jag kvitterar inte DSC-larmet, men går till kanal 16 och lyssnar. Om jag kan bistå rapporterar jag min position och ETA till JRCC eller OSC."
+          </div>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.1 (forts.) – Utsändning av distress alert från station ej i nöd (Relay)</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska kunna vidaresända ett nödlarm för någon annan som inte kan göra det själv.</p>
+          <p><strong>Situationer där du kan behöva göra Relay:</strong></p>
+          <ul>
+            <li>Du ser/hör någon i akut nöd som inte kan larma själv (t.ex. omkulter segelbåt, man överbord utan radio).</li>
+            <li>Du tar emot ett nödanrop på VHF kanal 16, men hör ingen kvittens från kuststation (t.ex. nödställd utanför VHF-räckvidd till JRCC men inom din räckvidd).</li>
+          </ul>
+          <p><strong>Procedur via DSC (om du har MMSI till nödställd):</strong></p>
+          <ol>
+            <li>Använd DSC-funktionen "Distress Relay" (om din radio stödjer det) eller sänd ett All Ships DSC-anrop med prioritet Distress och ange den nödställdes MMSI/position.</li>
+            <li>Följ upp direkt med röst på kanal 16.</li>
+          </ol>
+          <p><strong>Procedur via tal (om du inte kan/vill använda DSC för relay):</strong></p>
+          <ol>
+            <li>Gå till kanal 16.</li>
+            <li>Sänd: <strong>"MAYDAY RELAY, MAYDAY RELAY, MAYDAY RELAY"</strong></li>
+            <li><strong>"This is [Ditt namn/signal] x3"</strong></li>
+            <li><strong>"MAYDAY [Nödställdas namn]"</strong>, position, vad som hänt, hjälpbehov.</li>
+            <li>Fortsätt lyssna och samarbeta med JRCC.</li>
+          </ol>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "Om jag ser en omkulter båt utan radiosignal säger jag: MAYDAY RELAY x3, This is [Mitt namn] x3, MAYDAY [Båtens namn om känd], position XX, capsized sailboat, 2 persons in water, require immediate assistance. Over."
+          </div>
+        </div>
+        <div class="common-mistakes"><strong>Vanliga misstag</strong>
+          Att vänta för länge med att göra Relay när det är uppenbart att den nödställda inte når kuststation. Eller att glömma säga "MAYDAY RELAY" och istället säga "MAYDAY" (vilket indikerar att du själv är i nöd).
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">1.2 Il- och varningskommunikation (Urgency och Safety via DSC och tal)</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska kunna sända och ta emot Urgency (PAN-PAN) och Safety (SECURITÉ) meddelanden via DSC och röst.</p>
+          
+          <p><strong>Urgency (PAN-PAN) – Iltrafik:</strong></p>
+          <ul>
+            <li><strong>När:</strong> Brådskande situation som rör säkerhet men ej omedelbar livsfara. Exempel: medicinsk rådgivning (Radiomedical), allvarlig teknisk skada (mastbrott, motorhaveri långt från land), person saknas men ej bekräftad nöd.</li>
+            <li><strong>DSC-procedur:</strong>
+              <ol>
+                <li>Välj DSC-anrop med prioritet <strong>Urgency</strong>.</li>
+                <li>Välj "All stations" eller specifik station (t.ex. kuststation via MMSI).</li>
+                <li>Ange arbetskanal (ofta kanal 16, eller annan överenskommen kanal).</li>
+                <li>Sänd DSC-anropet.</li>
+              </ol>
+            </li>
+            <li><strong>Tal-procedur (efter DSC):</strong>
+              <ol>
+                <li>Gå till angiven kanal (t.ex. 16).</li>
+                <li>Sänd: <strong>"PAN-PAN, PAN-PAN, PAN-PAN"</strong></li>
+                <li><strong>"All stations" x3</strong> (eller specifik station)</li>
+                <li><strong>"This is [Ditt namn/signal] x3"</strong></li>
+                <li>Beskriv situationen: position, problem, vad du behöver.</li>
+                <li>Avsluta med <strong>"Over"</strong> och vänta på svar.</li>
+              </ol>
+            </li>
+          </ul>
+          
+          <p><strong>Safety (SECURITÉ) – Varningstrafik:</strong></p>
+          <ul>
+            <li><strong>När:</strong> Viktiga meddelanden om navigeringssäkerhet eller väderfara som påverkar andra fartyg. Exempel: drivande container, farligt vrak, plötslig dimma, isvarning, meddelande om övning med skarp ammunition.</li>
+            <li><strong>DSC-procedur:</strong>
+              <ol>
+                <li>Välj DSC-anrop med prioritet <strong>Safety</strong>.</li>
+                <li>Välj "All stations" (normalt, för att nå alla i området).</li>
+                <li>Ange arbetskanal (ofta kanal 16 för kort varning, eller annan kanal för längre MSI-meddelande).</li>
+                <li>Sänd DSC-anropet.</li>
+              </ol>
+            </li>
+            <li><strong>Tal-procedur (efter DSC):</strong>
+              <ol>
+                <li>Gå till angiven kanal.</li>
+                <li>Sänd: <strong>"SECURITÉ, SECURITÉ, SECURITÉ"</strong> (uttalas 'sä-kju-ri-té')</li>
+                <li><strong>"All stations" x3</strong></li>
+                <li><strong>"This is [Ditt namn/signal] x3"</strong></li>
+                <li>Ge varningen: område, fara, detaljer.</li>
+                <li>Avsluta med <strong>"Out"</strong> (ej dialog förväntas) eller <strong>"Over"</strong> (om dialog önskas).</li>
+              </ol>
+            </li>
+          </ul>
+          
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            <strong>PAN-PAN exempel:</strong> "PAN-PAN, PAN-PAN, PAN-PAN. All stations x3. This is Yacht Sea Star x3. Position 58-30N 011-20E. Riggskada, mast bruten. Begär bogsering till närmaste hamn. Inga personskador. Over."<br><br>
+            <strong>SECURITÉ exempel:</strong> "SECURITÉ, SECURITÉ, SECURITÉ. All stations x3. This is Yacht Windflower x3. Warning: drifting container sighted position 57-45N 011-50E, hazard to navigation. Out."
+          </div>
         </div>
       </div>
 
       <h3>C2. Kunskap: Skydd av nödfrekvenser</h3>
       
       <div class="req-item">
-        <span class="req-bullet">2.1-2.3 Störningar och falsklarm</span>
+        <span class="req-bullet">2.1 Åtgärder för att undvika störningar på nödfrekvenser</span>
         <div class="explanation">
-          Undvik onödig trafik på kanal 16 och 70. Blockera inte nödtrafik.
-          Sändning under pågående nödtrafik är förbjudet om du inte bistår.
-          Skydda utrustningen mot obehörig användning och lek.
+          <p><strong>Mål:</strong> Du ska förstå varför kanal 16 och 70 måste hållas fria och hur du praktiskt undviker att störa.</p>
+          <ul>
+            <li><strong>Kanal 16:</strong> Endast för nöd, säkerhet och <em>korta</em> anrop. Efter etablerad kontakt: byt omedelbart till arbetskanal (t.ex. 72/77).</li>
+            <li><strong>Kanal 70:</strong> Endast DSC (digitala anrop). <em>Ingen</em> taltrafik.</li>
+            <li><strong>Praktiska åtgärder:</strong>
+              <ul>
+                <li>Håll anrop på kanal 16 <em>korta</em> (max 30 sekunder).</li>
+                <li>Använd Dual Watch (DW) för att passa kanal 16 samtidigt som du ligger på arbetskanal.</li>
+                <li>Testa aldrig Distress-knappen skarpt.</li>
+                <li>Lär barn/gäster ombord att radion inte är en leksak.</li>
+                <li>Undvik att prata "för att prata" på kanal 16.</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "Jag använder kanal 16 endast för anrop och nöd/säkerhet. Jag flyttar samtalet till arbetskanal direkt efter kontakt. Jag pratar aldrig på kanal 70."
+          </div>
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">2.2 Förfarande vid hörande av nödtrafik</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska veta hur du agerar när du hör nöd-/il-/varningstrafik på radion.</p>
+          <ul>
+            <li><strong>Vid MAYDAY (nöd):</strong>
+              <ol>
+                <li><strong>Avbryt all egen trafik</strong> omedelbart.</li>
+                <li><strong>Lyssna</strong> på kanal 16 och notera: fartygets namn, position, typ av nöd.</li>
+                <li><strong>Vänta</strong> på att JRCC/kuststation kvitterar.</li>
+                <li><strong>Sända inte</strong> på kanal 16 om du inte är tillfrågad eller kan bistå.</li>
+                <li>Om du är nära den nödställda och kan hjälpa: vänta på lämpligt tillfälle (när JRCC frågar efter hjälp) och rapportera din position/ETA.</li>
+                <li>Om ingen kvitterar efter flera minuter: överväg att göra <strong>MAYDAY RELAY</strong> (se C1.1).</li>
+              </ol>
+            </li>
+            <li><strong>Om "Seelonce Mayday" ropas ut:</strong> Detta är en uppmaning att vara <em>helt tyst</em> på kanal 16. Sända ingenting (utom om du är del av räddningsinsatsen eller själv i nöd).</li>
+            <li><strong>Vid PAN-PAN eller SECURITÉ:</strong> Lyssna, notera info. Sända inte om du inte har relevant information att bidra med.</li>
+          </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "När jag hör MAYDAY slutar jag genast prata, lyssnar och noterar detaljer. Jag sänder inte om jag inte blir tillfrågad eller kan bistå."
+          </div>
+        </div>
+        <div class="common-mistakes"><strong>Vanliga misstag</strong>
+          Att fortsätta sin egen konversation när MAYDAY hörs. Eller att 'hjälpa till' genom att ropa upp den nödställda när JRCC redan hanterar situationen (skapar förvirring).
+        </div>
+      </div>
+
+      <div class="req-item">
+        <span class="req-bullet">2.3 Åtgärder för att undvika falska nödlarm</span>
+        <div class="explanation">
+          <p><strong>Mål:</strong> Du ska förstå varför falsklarm är allvarliga och hur du förhindrar dem.</p>
+          <ul>
+            <li><strong>Varför det är allvarligt:</strong> Falsklarm sätter igång resurskrävande räddningsinsatser, kan fördröja hjälp till verkligt nödställda och är straffbart.</li>
+            <li><strong>Praktiska åtgärder:</strong>
+              <ul>
+                <li><strong>Skydda Distress-knappen:</strong> Se till att locket/skyddet är stängt när radion inte används.</li>
+                <li><strong>Utbilda ombord:</strong> Lär alla som har tillgång till radion vad Distress-knappen är och att den aldrig får testas skarpt.</li>
+                <li><strong>Testa endast i testläge:</strong> Många radioapparater har en inbyggd testfunktion (DSC Self Test) som inte sänder skarpt larm. Använd den.</li>
+                <li><strong>EPIRB/PLB:</strong> Förvara säkert, testa endast i testläge och registrera hos JRCC/PTS så att falska larm kan sorteras.</li>
+              </ul>
+            </li>
+            <li><strong>Om falsklarm ändå sker:</strong> Se punkt 2.6 nedan (återkallande).</li>
+          </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "Jag skyddar Distress-knappen med locket, testar aldrig den skarpt och ser till att barn/gäster vet att radion inte är en leksak."
+          </div>
         </div>
       </div>
 
       <div class="req-item">
         <span class="req-bullet">2.6 Återkallande av felaktigt nödlarm</span>
         <div class="explanation">
-          Om du råkar sända DSC-larm av misstag:
-          1. Stäng av radion (för att stoppa omsändning).
-          2. Slå på, gå till Kanal 16.
-          3. Sänd: "All stations" x3, "This is [My Name]", "Cancel DSC Alert sent by mistake", "Over".
+          <p><strong>Mål:</strong> Du ska kunna snabbt och korrekt återkalla ett DSC-larm eller MAYDAY som sänts av misstag.</p>
+          <p><strong>Om du av misstag trycker på Distress-knappen och DSC-larm går iväg:</strong></p>
+          <ol>
+            <li><strong>Stäng av radion</strong> omedelbart (för att stoppa eventuell automatisk omsändning).</li>
+            <li><strong>Slå på radion igen</strong> och gå till <strong>kanal 16</strong>.</li>
+            <li><strong>Sänd återkallande:</strong>
+              <ul>
+                <li><strong>"All stations, All stations, All stations"</strong></li>
+                <li><strong>"This is [Ditt namn/signal] x3"</strong></li>
+                <li><strong>"Please disregard DSC Distress Alert sent at [tid, om du vet] by MMSI [ditt MMSI]. Distress Alert transmitted in error. Over."</strong></li>
+                <li>Om kuststation svarar och bekräftar: tacka och bekräfta att allt är OK.</li>
+              </ul>
+            </li>
+            <li><strong>Dokumentera:</strong> Anteckna händelsen (tid, orsak) i logg om du för en. Om JRCC kontaktar dig via telefon: förklara situationen.</li>
+          </ol>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "All stations, All stations, All stations. This is Yacht Sea Breeze, Sea Breeze, Sea Breeze. Please disregard DSC Distress Alert sent by MMSI 265123456. Distress Alert transmitted in error. All well on board. Over."
+          </div>
         </div>
-        <div class="model-answer">
-          <strong>Modellsvar / Vad du ska kunna</strong>
-          "Jag stänger av sändaren, startar om och ropar ut på kanal 16 att larmet var ett misstag."
+        <div class="common-mistakes"><strong>Vanliga misstag</strong>
+          Att tro att det räcker att stänga av radion – du måste aktivt ropa ut återkallandet på kanal 16. Eller att bli så stressad att du glömmer säga "in error" och skapar förvirring.
         </div>
       </div>
 
-      <h3>C3. Kännedom: Larm, kommunikation och lokaliseringssignaler</h3>
+      <h3>C3. Kännedom: Larm, kommunikation och lokaliseringssignaler (nödutrustning)</h3>
       
       <div class="req-item">
-        <span class="req-bullet">3.1 EPIRB (406 MHz / 121,5 MHz)</span>
+        <span class="req-bullet">3.1 EPIRB (Emergency Position Indicating Radio Beacon)</span>
         <div class="explanation">
-          Satellitnödsändare. Ska registreras. Aktiveras manuellt eller via hydrostat (vattentryck). Sänder ID till satellit och pejlsignal (121,5) till flyg.
-          Kontrollera batteriets utgångsdatum och gör funktionsprov (testläge).
+          <p><strong>Mål:</strong> Du ska förstå hur EPIRB fungerar, varför registrering är kritisk och hur du underhåller den.</p>
+          <ul>
+            <li><strong>Funktion:</strong> Satellitnödsändare som larmar via <strong>Cospas-Sarsat</strong>-satelliter till räddningscentraler över hela världen.</li>
+            <li><strong>Frekvenser:</strong>
+              <ul>
+                <li><strong>406 MHz:</strong> Digital signal med ID (MMSI eller unikt EPIRB-ID) och position (från inbyggd GPS). Ger exakt identifikation och position.</li>
+                <li><strong>121,5 MHz:</strong> Analogt pejlsignal för närpejling av räddningshelikopter/flyg när de är i närheten.</li>
+              </ul>
+            </li>
+            <li><strong>Aktivering:</strong>
+              <ul>
+                <li><strong>Manuellt:</strong> Dra ut antenn/aktivera enligt instruktion.</li>
+                <li><strong>Automatiskt (hydrostat):</strong> Vid sjösättning och nedsänkning på visst djup (ca 1,5–4 m) lossnar den från fäste och flyter upp; aktiveras automatiskt.</li>
+              </ul>
+            </li>
+            <li><strong>Registrering (KRITISKT):</strong> EPIRB ska registreras hos räddningsmyndigheten (i Sverige: JRCC via Sjöfartsverket eller motsvarande formulär). Registreringen kopplar EPIRB-ID till fartyg och kontaktpersoner, så att JRCC vet vem som larmat och kan verifiera om det är falsklarm eller äkta.</li>
+            <li><strong>Underhåll:</strong>
+              <ul>
+                <li>Kontrollera <strong>batteriets utgångsdatum</strong> (oftast 5–10 år).</li>
+                <li>Testa med <strong>inbyggd testfunktion</strong> (sänder inte skarpt larm, endast självtest av elektronik).</li>
+                <li>Förvara torrt och säkert, med fri väg till sjösättning.</li>
+                <li>Uppdatera registrering vid byte av fartyg, kontaktpersoner eller telefonnummer.</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "EPIRB larmar via satellit till JRCC vid nöd. Den aktiveras manuellt eller automatiskt vid sjösättning. Jag kontrollerar batteridatum och ser till att den är registrerad så att JRCC vet vem vi är."
+          </div>
         </div>
       </div>
 
       <div class="req-item">
-        <span class="req-bullet">3.2 SART (Radar Transponder)</span>
+        <span class="req-bullet">3.2 SART / AIS-SART (Search and Rescue Transponder/Transmitter)</span>
         <div class="explanation">
-          Radarsvarare. Tas med i livflotten. Startas manuellt. När den träffas av X-band radar (3 cm) syns 12 prickar på räddningsfartygets radar.
-          Finns även som AIS-SART (sänder GPS-position på AIS).
+          <p><strong>Mål:</strong> Du ska förstå hur SART/AIS-SART används för lokalisering vid räddning och skillnaden mellan de två typerna.</p>
+          
+          <p><strong>Radar SART (9 GHz X-band):</strong></p>
+          <ul>
+            <li><strong>Funktion:</strong> Radarsvarare. När den träffas av ett räddningsfartygs X-band radar (3 cm, 9 GHz) svarar den med en serie pulser som syns som 12 prickar i en rad på radarpresentationen.</li>
+            <li><strong>Räckvidd:</strong> Ca 5 nm från fartyg (beroende på antennhöjd), upp till 30+ nm från helikopter/flyg.</li>
+            <li><strong>Aktivering:</strong> Starta manuellt när du är i livbåt/livflotte eller i vattnet (vissa modeller startar automatiskt vid kontakt med vatten).</li>
+            <li><strong>Placering ombord:</strong> Tas med i livbåt/livflotte (ofta monterad i/nära nödpaket).</li>
+            <li><strong>Batteritid:</strong> Standby ~96 timmar, aktivt läge ~8 timmar.</li>
+          </ul>
+          
+          <p><strong>AIS-SART:</strong></p>
+          <ul>
+            <li><strong>Funktion:</strong> Sänder nödsignal via AIS på VHF-frekvenserna 161,975 MHz (AIS 1) och 162,025 MHz (AIS 2). Visar en nödsymbol på AIS-plotter/ECDIS med position (från inbyggd GPS).</li>
+            <li><strong>Fördel:</strong> Direkt GPS-position visas på alla AIS-mottagare i närheten (inte bara radar). Enklare för små båtar att upptäcka.</li>
+            <li><strong>Räckvidd:</strong> Liknande VHF (upp till ca 5–10 nm beroende på antennhöjd, längre från flyg).</li>
+            <li><strong>Aktivering och placering:</strong> Samma som radar-SART.</li>
+          </ul>
+          
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "SART är en radarsvarare som syns som 12 prickar på räddningsfartygets radar. AIS-SART sänder position via AIS. Båda aktiveras manuellt i livbåt/livflotte och hjälper räddare att hitta oss."
+          </div>
         </div>
       </div>
 
       <div class="req-item">
-        <span class="req-bullet">3.3 Bärbar VHF</span>
+        <span class="req-bullet">3.3 Bärbar VHF för nödkommunikation</span>
         <div class="explanation">
-          För kommunikation i livbåt/livflotte. GMDSS-klassade handapparater ska vara gula/orange och ha ett speciellt nödbatteri (plomberat, ej laddningsbart) plus ett bruksbatteri.
+          <p><strong>Mål:</strong> Du ska känna till kraven på bärbar VHF som nödutrustning och hur den används i livbåt/livflotte.</p>
+          <ul>
+            <li><strong>GMDSS-klassad bärbar VHF:</strong> För fartyg med GMDSS-krav ska handhållen VHF vara <strong>gul eller orange</strong> (synlig i vatten) och uppfylla särskilda krav.</li>
+            <li><strong>Batterier:</strong>
+              <ul>
+                <li><strong>Bruksbatteri:</strong> Laddningsbart (används normalt ombord).</li>
+                <li><strong>Nödbatteri:</strong> Speciellt vattentätt, plomberat, ej laddningsbart batteri som endast ska öppnas i nödsituation. Ger flera timmars drift.</li>
+              </ul>
+            </li>
+            <li><strong>Användning i livbåt/livflotte:</strong>
+              <ul>
+                <li>Används för att kommunicera med räddningsenheter på kanal 16 (eller anvisad SAR-kanal, t.ex. 6).</li>
+                <li>Kan användas för att bekräfta position, rapportera tillstånd och få instruktioner.</li>
+                <li>Håll batterierna torra och kontrollera regelbundet att nödbatteriet inte har passerat utgångsdatum.</li>
+              </ul>
+            </li>
+            <li><strong>Övrig bärbar VHF (fritidsbåt):</strong> Även om du inte har GMDSS-krav är en vattentät handhållen VHF värdefull som reserv och för kommunikation i jolle/livflotte. Se till att den har DSC och MMSI programmerat.</li>
+          </ul>
+          <div class="model-answer"><strong>Modellsvar / Vad du ska kunna</strong>
+            "Bärbar VHF i livbåt ska vara gul/orange och ha ett nödbatteri. Jag använder den på kanal 16 för att kommunicera med räddare och rapportera vår position/status."
+          </div>
         </div>
       </div>
     </section>
